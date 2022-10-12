@@ -1,41 +1,30 @@
 package com.example.demo.model;
+import lombok.*;
+import javax.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.io.Serializable;
 
-public class Usuario {
-    private String nombre;
-    private String apellido;
+
+@Entity
+@Table(name = "usuario")
+@ToString @EqualsAndHashCode
+@NoArgsConstructor
+public class Usuario implements Serializable {
+    @Getter @Setter @Column(name="name")
+    private String name;
+    @Getter @Setter @Column(name="lastName")
+    private String lastName;
+    @Getter @Setter @Column(name="id") @Id
     private Long id;
 
-//@Entity
-
-    public Usuario(String nombre, String apellido, Long id) {
-        this.nombre = nombre;
-        this.apellido = apellido;
+    public Usuario(String name, String lastName, Long id) {
+        this.name = name;
+        this.lastName = lastName;
         this.id = id;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
 }
 
 
